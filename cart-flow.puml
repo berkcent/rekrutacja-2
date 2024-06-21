@@ -1,0 +1,44 @@
+@startuml
+start
+
+:Start adding to cart process;
+
+:User selects a product;
+:Check product availability in stock;
+
+if (Product available?) then (Yes)
+    :User specifies desired quantity;
+    if (Desired quantity available?) then (Yes)
+        :Add product to cart;
+        :Update total cart price;
+        :Display success message;
+    else (No)
+        :Display insufficient stock message;
+    endif
+else (No)
+    :Display out of stock message;
+endif
+
+:User views products in cart;
+
+while (User wants to change product quantity?)
+    :User changes product quantity;
+    :Check if desired quantity is available;
+    if (Desired quantity available?) then (Yes)
+        :Update product quantity in cart;
+        :Update total cart price;
+    else (No)
+        :Display insufficient stock message;
+    endif
+endwhile
+
+while (User wants to remove a product?)
+    :User removes product from cart;
+    :Update cart;
+    :Update total cart price;
+endwhile
+
+:End process;
+
+stop
+@enduml
